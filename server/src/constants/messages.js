@@ -51,7 +51,26 @@ const MESSAGES = {
     FETCHED: "Product fetched successfully.",
     LIST_FETCHED: "Products fetched successfully.",
     NOT_FOUND: "Product not found.",
-    NOT_OWNER: "You are not the owner of this product.",
+    NOT_OWNER: "You are not authorised to modify this product.",
+  },
+
+  // ── Category ─────────────────────────────────────────────────────────────
+  CATEGORY: {
+    CREATED: "Category created successfully.",
+    UPDATED: "Category updated successfully.",
+    DELETED: "Category deleted successfully.",
+    FETCHED: "Category fetched successfully.",
+    LIST_FETCHED: "Categories fetched successfully.",
+    NOT_FOUND: "Category not found.",
+    ALREADY_EXISTS: "A category with this name already exists.",
+  },
+
+  // ── Wishlist ──────────────────────────────────────────────────────────────
+  WISHLIST: {
+    FETCHED: "Wishlist fetched successfully.",
+    ADDED: "Product added to wishlist.",
+    REMOVED: "Product removed from wishlist.",
+    CLEARED: "Wishlist cleared.",
   },
 
   // ── Order ────────────────────────────────────────────────────────────────

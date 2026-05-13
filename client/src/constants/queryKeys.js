@@ -26,20 +26,44 @@ export const QUERY_KEYS = {
 
   // ── Products ──────────────────────────────────────────────────────────────
   products: {
+    // Broadest key — invalidate to refetch everything product-related
     all: ["products"],
+
+    // Public listing with filters/sort/pagination.
+    // Each unique filters object gets its own cache entry.
+    // Usage: QUERY_KEYS.products.list({ category: "indoor-plants", page: 2 })
     list: (filters) => ["products", "list", filters],
+
+    // Single product by id or slug
     detail: (id) => ["products", id],
-    vendorProducts: ["products", "vendor"],
+
+    // Vendor's own product list — supports pagination/sort params.
+    // Changed from static array to factory fn so different pages/sorts
+    // don't collide in the cache.
+    // Usage: QUERY_KEYS.products.vendorList({ page: 1, sort: "newest" })
+    vendorList: (params) => ["products", "vendor", params],
+
+    // Static key for invalidating ALL vendor product queries at once
+    // Usage: queryClient.invalidateQueries({ queryKey: QUERY_KEYS.products.vendor })
+    vendor: ["products", "vendor"],
   },
 
   // ── Categories ────────────────────────────────────────────────────────────
   categories: {
+    // Broadest key — invalidate to refetch all category queries
     all: ["categories"],
+
+    // Public active category list (alphabetical, no params needed).
+    // Kept as a stable array so all consumers share one cache entry.
+    list: ["categories", "list"],
+
+    // Single category by slug (used in product filter breadcrumbs)
     detail: (slug) => ["categories", slug],
   },
 
   // ── Wishlist ──────────────────────────────────────────────────────────────
   wishlist: {
+    // Single entry per user — wishlist has no sub-keys needed
     all: ["wishlist"],
   },
 

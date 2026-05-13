@@ -24,6 +24,7 @@ import env from "./config/env.js";
 import apiRouter from "./routes/index.routes.js";
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorHandler.js";
+import "./services/product.service.js";
 
 const app = express();
 

@@ -1,6 +1,9 @@
 import { Router } from "express";
 import healthRouter from "./health.routes.js";
 import authRouter from "./auth.routes.js";
+import productRouter from "./product.routes.js";
+import categoryRouter from "./category.routes.js";
+import wishlistRouter from "./wishlist.routes.js";
 
 const router = Router();
 
@@ -11,8 +14,9 @@ router.use("/health", healthRouter);
 router.use("/auth", authRouter);
 
 // ── Marketplace (Phase 3) ────────────────────────────────────────────────────
-// router.use("/products", productRouter);
-// router.use("/categories", categoryRouter);
+router.use("/products",   productRouter);
+router.use("/categories", categoryRouter);
+router.use("/wishlist",   wishlistRouter);
 
 // ── Commerce (Phase 4) ───────────────────────────────────────────────────────
 // router.use("/cart", cartRouter);
